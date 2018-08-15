@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
+import { LoadPlaylistComponent } from './load-playlist/load-playlist.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  {path: "", component: MainDashboardComponent }
+  {path: "", component: MainDashboardComponent },
+  {path: "loadPlaylist", component: LoadPlaylistComponent },
+  {path: "**", component: NotFoundComponent }
 ];
 
 @NgModule({

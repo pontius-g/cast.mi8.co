@@ -8,12 +8,16 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule } from '@angular/material';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
+import { LoadPlaylistComponent } from './load-playlist/load-playlist.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
-    MainDashboardComponent
+    MainDashboardComponent,
+    LoadPlaylistComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
