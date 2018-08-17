@@ -1,13 +1,13 @@
 <H1>Playlists' Collection</H1>
-<mat-list (dragover)="playlistInputHint='catching';" (drop)="playlistInputHint='cought!';" >
-  <mat-list-item>
+<mat-list>
+  <mat-list-item (dragleave)="playlistInputHint='Waiting for file...';" (dragover)="playlistInputHint='Catching';" (drop)="playlistUpld($event,playlistUploadName.value)">
     <mat-form-field>
-      <input matInput placeholder="Name new playlist" #playlistUploadName required/><mat-hint>{{playlistInputHint}}</mat-hint>
+      <input matInput placeholder="Name new playlist" #playlistUploadName/><mat-hint>{{playlistInputHint}}</mat-hint>
     </mat-form-field>
-    <input #playlistInputFile style='display: none;' type="file" accept=".m3u" required/>
+    <input #playlistInputFile style='display: none;' type="file" accept=".m3u" (change)="playlistUpld($event,playlistUploadName.value)"/>
     <button matTooltip="upload file" matTooltipPosition="above" mat-icon-button (click)="playlistInputFile.click()"><i class="material-icons">file_upload</i></button>
   </mat-list-item>
 </mat-list>
 <br/><br/>
 <mat-divider></mat-divider>
-<!-- TODO: list collected playlist from storage -->
+<!-- TODO: list collected playlists from storage -->

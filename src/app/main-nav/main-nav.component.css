@@ -4,7 +4,10 @@
 
 .sidenav {
   width: 200px;
+  background: linear-gradient(to left, #fff,#eee);
 }
+
+.mat-sidenav-content { background: radial-gradient(#fff,#eee); }
 
 .mat-toolbar.mat-primary {
   position: sticky;
