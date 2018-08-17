@@ -1,3 +1,13 @@
-<p>
-  load-playlist works!
-</p>
+<H1>Playlists' Collection</H1>
+<mat-list (dragover)="playlistInputHint='catching';" (drop)="playlistInputHint='cought!';" >
+  <mat-list-item>
+    <mat-form-field>
+      <input matInput placeholder="Name new playlist" #playlistUploadName required/><mat-hint>{{playlistInputHint}}</mat-hint>
+    </mat-form-field>
+    <input #playlistInputFile style='display: none;' type="file" accept=".m3u" required/>
+    <button matTooltip="upload file" matTooltipPosition="above" mat-icon-button (click)="playlistInputFile.click()"><i class="material-icons">file_upload</i></button>
+  </mat-list-item>
+</mat-list>
+<br/><br/>
+<mat-divider></mat-divider>
+<!-- TODO: list collected playlist from storage -->
