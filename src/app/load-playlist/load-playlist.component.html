@@ -11,3 +11,11 @@
 <br/><br/>
 <mat-divider></mat-divider>
 <!-- TODO: list collected playlists from storage -->
+<mat-list>
+  <mat-list-item *ngFor="let pl of db.storedPlaylists">
+    <mat-form-field>
+      <input matInput [value]="pl.listname" disabled/>
+    </mat-form-field>
+    <button matTooltip="remove" matTooltipPosition="above" mat-icon-button (click)="db.delPlaylist(pl.listname)"><i class="material-icons">close</i></button>
+  </mat-list-item>
+</mat-list>

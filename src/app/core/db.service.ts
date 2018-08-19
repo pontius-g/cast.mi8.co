@@ -17,8 +17,16 @@ export class DbService {
     let temp:string;
     if (temp=window.localStorage.getItem('storedPlaylists')) {
       this.storedPlaylists=JSON.parse(temp);
-      this.currentPlaylist=this.currentPlaylist;
+      this.currentPlaylistSet(this.currentPlaylistGet());
     } else this.__router.navigate(['/loadPlaylist']);
+  }
+  dashboardUpd(o?:psStoredPlaylist){
+    if (typeof o === 'undefined') {
+      window.localStorage.removeItem('currentPlaylist');
+      this.currentPlaylist$.next([]);
+    } else {
+      this.currentPlaylistSet(o.listname);
+    }
   }
   addPlaylist(d:Array<psStoredPlaylistItem>, n:string){
     let existed: boolean=false;
@@ -26,17 +34,24 @@ export class DbService {
       if (dd.listname===n) {a[i].list=d; existed=true;}
     });
     if (!existed) this.storedPlaylists.push({ list: d, listname: n });
-    console.log(JSON.stringify(this.storedPlaylists));
+    window.localStorage.setItem('storedPlaylists', JSON.stringify(this.storedPlaylists));
+    this.currentPlaylistSet(n);
+    this.__router.navigate(['/']);
+  }
+  delPlaylist(n:string){
+    this.storedPlaylists.forEach((d,i,a)=>{if (d.listname===n) a.splice(i,1);});
+    if (this.currentPlaylistGet()===n) this.dashboardUpd(this.storedPlaylists[0]);
     window.localStorage.setItem('storedPlaylists', JSON.stringify(this.storedPlaylists));
   }
-  get currentPlaylist():string {
-    return window.localStorage.getItem('currentPlaylist');
-  }
-  set currentPlaylist(n:string){
-    console.log('setting current playlist');
+  currentPlaylistGet():string {return window.localStorage.getItem('currentPlaylist');}
+  currentPlaylistSet(n:string){
     if (n!==null) {
       this.storedPlaylists.forEach(d=>{ if(d.listname===n) this.currentPlaylist$.next(d.list); });
       window.localStorage.setItem('currentPlaylist',n);
     }
+  }
+  currentPlaylistSw(n:string){
+    this.currentPlaylistSet(n);
+    this.__router.navigate(['/']);
   }
 }
