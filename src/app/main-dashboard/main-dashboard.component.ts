@@ -10,25 +10,14 @@ import { DbService } from '../core/db.service';
 })
 export class MainDashboardComponent {
   /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
+  card = { cols: 1, rows: 1 , num: 3};
+  // dummy=this.breakpointObserver.observe(Breakpoints.Handset).pipe(
+  //   map(({ matches }) => {
+  //     if (matches) {
+  //       this.card.num = 1;
+  //     } else this.card.num = 3;
+  //   })
+  // );
+  constructor(private breakpointObserver: BreakpointObserver, private db: DbService) {}
 
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-      ];
-    })
-  );
-
-  constructor(private breakpointObserver: BreakpointObserver, private __db: DbService) {}
 }
