@@ -9,6 +9,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { LoadPlaylistComponent } from './load-playlist/load-playlist.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatCardModule,
     MatMenuModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 <H1>Playlists' Collection</H1>
 <mat-list>
-  <mat-list-item (dragleave)="playlistInputHint='Waiting for file...';" (dragover)="playlistInputHint='Catching';" (drop)="playlistUpld($event,playlistUploadName.value)">
+  <mat-list-item (dragleave)="playlistInputHint='Waiting for file...';" (dragover)="playlistInputHint='Catching...'" (drop)="playlistUpld($event,playlistUploadName.value)">
     <mat-form-field>
       <input matInput placeholder="Name new playlist" #playlistUploadName/><mat-hint>{{playlistInputHint}}</mat-hint>
     </mat-form-field>

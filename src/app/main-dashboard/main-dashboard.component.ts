@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointState, BreakpointObserver } from '@angular/cdk/layout';
+import { DbService } from '../core/db.service';
 
 @Component({
   selector: 'ps-main-dashboard',
@@ -29,5 +30,5 @@ export class MainDashboardComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private __db: DbService) {}
 }
