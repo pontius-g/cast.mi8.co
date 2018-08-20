@@ -18,6 +18,6 @@ export class MainDashboardComponent {
   //     } else this.card.num = 3;
   //   })
   // );
-  constructor(private breakpointObserver: BreakpointObserver, private db: DbService) {}
+  constructor(private breakpointObserver: BreakpointObserver, public db: DbService) {}
 
 }
