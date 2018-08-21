@@ -22,7 +22,7 @@ export class LoadPlaylistComponent implements OnInit {
       (<any>ev.target).result.split(/#EXTINF:.*,/).forEach((d: string, i: number) => {
         if (i) {
           let t:Array<string>=d.split(/\n/);
-          preList.push({name: t[0], link: t[1]});
+          preList.push({name: t[0], link: t[1], fav: false});
         }
         // else { STORE PLAYLIST PARAMETER STRING }
       });

@@ -1,6 +1,7 @@
 export interface psStoredPlaylistItem {
     name: string | number,
     link: string,
+    fav: boolean,
     infoUrl?: string,
     epgUrl?: string,
     epg?: any

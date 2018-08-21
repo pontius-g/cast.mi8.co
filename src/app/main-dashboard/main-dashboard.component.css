@@ -10,11 +10,12 @@
   bottom: 15px;
 }
 
-.more-button {
+.fav-button {
   position: absolute;
   top: 5px;
   right: 10px;
 }
+.fav-button mat-icon::before { content: 'more_vert' }
 
 .dashboard-card-content {
   text-align: center;

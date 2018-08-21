@@ -6,8 +6,8 @@
         <mat-card-header>
           <mat-card-title>
             <h3>{{pl.name}}</h3>
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
+            <button mat-icon-button class="fav-button" (click)="pl.fav=!pl.fav;">
+              <mat-icon></mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
               <button mat-menu-item>Pin to top</button>
