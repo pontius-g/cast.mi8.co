@@ -19,5 +19,5 @@ export class MainDashboardComponent {
   //   })
   // );
   constructor(private breakpointObserver: BreakpointObserver, public db: DbService) {}
-
+  // TODO: Preview button and tile
 }
