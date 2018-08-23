@@ -1,13 +1,14 @@
 <div class="grid-container">
   <h1 class="mat-h1">Channels</h1>
   <mat-grid-list [cols]="card.num" rowHeight="128px">
-    <mat-grid-tile *ngFor="let pl of db.currentPlaylist$ | async" [colspan]="card.cols" [rowspan]="card.rows">
+    <mat-grid-tile *ngFor="let pl of db.currentPlaylist$ | async; let i=index" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
             <h3>{{pl.name}}</h3>
-            <button mat-icon-button class="fav-button" (click)="pl.fav=!pl.fav;">
-              <mat-icon></mat-icon>
+            <button mat-icon-button class="fav-button" (click)="db.favPlaylistItem(i,!pl.fav)">
+              <mat-icon *ngIf="pl.fav">star</mat-icon>
+              <mat-icon *ngIf="!pl.fav" style="color: rgb(81, 89, 96);">star_border</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
               <button mat-menu-item>Pin to top</button>

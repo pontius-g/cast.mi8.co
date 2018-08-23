@@ -15,7 +15,7 @@
   top: 5px;
   right: 10px;
 }
-.fav-button mat-icon::before { content: 'more_vert' }
+.fav-button mat-icon { color: rgb(228, 215, 63) }
 
 .dashboard-card-content {
   text-align: center;

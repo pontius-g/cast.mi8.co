@@ -29,6 +29,9 @@ export class DbService {
     }
   }
   addPlaylist(d:Array<psStoredPlaylistItem>, n:string){
+    d.sort((a:psStoredPlaylistItem,b:psStoredPlaylistItem)=>{
+      return a.name.toString().localeCompare(b.name.toString());
+    });
     let existed: boolean=false;
     this.storedPlaylists.forEach((dd, i, a)=>{
       if (dd.listname===n) {a[i].list=d; existed=true;}
@@ -69,6 +72,13 @@ export class DbService {
   favPlaylistItem(i:number,f:boolean){
     let curList=this.storedPlaylists[this.currentPlaylistGet('index')];
     curList.list[i].fav=f;
+    curList.list.sort((a:psStoredPlaylistItem,b:psStoredPlaylistItem)=>{
+      if (a.fav &&  b.fav) {return a.name.toString().localeCompare(b.name.toString());
+      } else {
+        if (!a.fav && !b.fav){return a.name.toString().localeCompare(b.name.toString());
+        } else { return (a.fav)? -1:1; }
+      }
+    });
     this.currentPlaylistUpd(curList);
   }
 }
