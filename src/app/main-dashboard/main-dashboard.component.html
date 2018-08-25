@@ -1,6 +1,6 @@
 <div class="grid-container">
   <h1 class="mat-h1">Channels</h1>
-  <mat-grid-list [cols]="card.num" rowHeight="128px">
+  <mat-grid-list [cols]="card.num" rowHeight="192px">
     <mat-grid-tile *ngFor="let pl of db.currentPlaylist$ | async; let i=index" [colspan]="card.cols" [rowspan]="card.rows">
       <mat-card class="dashboard-card">
         <mat-card-header>
@@ -10,16 +10,19 @@
               <mat-icon *ngIf="pl.fav">star</mat-icon>
               <mat-icon *ngIf="!pl.fav" style="color: rgb(81, 89, 96);">star_border</mat-icon>
             </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item>Pin to top</button>
-              <button mat-menu-item>Expand</button>
-              <button mat-menu-item>Remove</button>
-            </mat-menu>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
+          <div class="epg-view" *ngIf="false"></div>
         </mat-card-content>
+        <mat-card-footer>
+          <button mat-raised-button>cast</button>
+          <button mat-raised-button (click)='preViewSrc="#"'>preview</button>
+        </mat-card-footer>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
+</div>
+<div class="preview" *ngIf='preViewSrc'>
+  <div class="ps-spacer"></div><video></video><div class="ps-spacer"></div>
 </div>
