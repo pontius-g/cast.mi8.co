@@ -17,12 +17,12 @@
         </mat-card-content>
         <mat-card-footer>
           <button mat-raised-button>cast</button>
-          <button mat-raised-button (click)='preViewSrc="#"'>preview</button>
+          <button mat-raised-button (click)='previewState=true'>preview</button>
         </mat-card-footer>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-<div class="preview" *ngIf='preViewSrc'>
+<div class="preview" *ngIf='previewState'>
   <div class="ps-spacer"></div><video></video><div class="ps-spacer"></div>
 </div>

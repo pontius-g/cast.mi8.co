@@ -41,10 +41,6 @@ mat-card { padding-top: 16px; }
   height: 100%;
   width: auto;
 }
-.ps-spacer {
-  flex: 1 auto;
-}
-
 .mat-card-footer {
   position: absolute;
   text-align: center;

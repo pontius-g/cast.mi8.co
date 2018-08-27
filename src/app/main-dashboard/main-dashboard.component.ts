@@ -18,7 +18,7 @@ export class MainDashboardComponent {
   //     } else this.card.num = 3;
   //   })
   // );
-  preViewSrc: string = null;
+  previewState: boolean = false;
   constructor(private breakpointObserver: BreakpointObserver, public db: DbService) {}
   // TODO: Preview button and tile
 }
