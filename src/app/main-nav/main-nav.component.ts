@@ -3,7 +3,8 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DbService } from '../core/db.service';
-
+declare const cast:any;
+declare const chrome:any;
 @Component({
   selector: 'ps-main-nav',
   templateUrl: './main-nav.component.html',
@@ -21,7 +22,7 @@ export class MainNavComponent {
     window['__onGCastApiAvailable'] = (canCast)=>{
       if(canCast){
         cast.framework.CastContext.getInstance().setOptions({
-          receiverApplicationId: applicationId,
+          receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
           autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
         });
       }
