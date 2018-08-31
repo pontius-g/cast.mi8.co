@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DbService } from '../core/db.service';
-declare const cast:any;
-declare const chrome:any;
+import { CastService } from '../core/cast.service';
 @Component({
   selector: 'ps-main-nav',
   templateUrl: './main-nav.component.html',
@@ -15,18 +14,5 @@ export class MainNavComponent {
     .pipe(
       map(result => result.matches)
     );
-    
-  constructor(private breakpointObserver: BreakpointObserver, public db:DbService) {}
-  
-  ngOnInit() {
-    window['__onGCastApiAvailable'] = (canCast)=>{
-      if(canCast){
-        cast.framework.CastContext.getInstance().setOptions({
-          receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
-          autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED
-        });
-      }
-    }
-  }
-
+  constructor(private breakpointObserver: BreakpointObserver, public db:DbService, public cs:CastService ) {}
   }
