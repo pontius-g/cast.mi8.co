@@ -73,11 +73,8 @@ export class DbService {
     let curList=this.storedPlaylists[this.currentPlaylistGet('index')];
     curList.list[i].fav=f;
     curList.list.sort((a:psStoredPlaylistItem,b:psStoredPlaylistItem)=>{
-      if (a.fav &&  b.fav) {return a.name.toString().localeCompare(b.name.toString());
-      } else {
-        if (!a.fav && !b.fav){return a.name.toString().localeCompare(b.name.toString());
-        } else { return (a.fav)? -1:1; }
-      }
+      if (a.fav &&  b.fav) {return a.name.toString().localeCompare(b.name.toString());}
+      else {if (!a.fav && !b.fav){return a.name.toString().localeCompare(b.name.toString());} else { return (a.fav)? -1:1; }}
     });
     this.currentPlaylistUpd(curList);
   }
