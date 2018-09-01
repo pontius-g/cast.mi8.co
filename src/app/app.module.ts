@@ -10,6 +10,8 @@ import { MainDashboardComponent } from './main-dashboard/main-dashboard.componen
 import { LoadPlaylistComponent } from './load-playlist/load-playlist.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CoreModule } from './core/core.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { CoreModule } from './core/core.module';
     MatMenuModule,
     MatInputModule,
     MatTooltipModule,
-    CoreModule
+    CoreModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
