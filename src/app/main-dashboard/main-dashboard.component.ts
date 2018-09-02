@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointState, BreakpointObserver } from '@angular/cdk/layout';
 import { DbService } from '../core/db.service';
+import { CastService } from '../core/cast.service';
 
 @Component({
   selector: 'ps-main-dashboard',
@@ -19,6 +20,6 @@ export class MainDashboardComponent {
   //   })
   // );
   previewState: boolean = false;
-  constructor(private breakpointObserver: BreakpointObserver, public db: DbService) {}
+  constructor(private breakpointObserver: BreakpointObserver, public db: DbService, public cast: CastService) {}
   // TODO: Preview button and tile
 }

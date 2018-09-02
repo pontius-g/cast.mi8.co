@@ -16,7 +16,7 @@
           <div class="epg-view" *ngIf="false"></div>
         </mat-card-content>
         <mat-card-footer>
-          <button mat-raised-button>cast</button>
+          <button mat-raised-button (click)='cast.playStream.next(pl.link)'>cast</button>
           <button mat-raised-button (click)='previewState=true'>preview</button>
         </mat-card-footer>
       </mat-card>

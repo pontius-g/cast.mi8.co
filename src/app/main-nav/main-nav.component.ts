@@ -14,5 +14,5 @@ export class MainNavComponent {
     .pipe(
       map(result => result.matches)
     );
-  constructor(private breakpointObserver: BreakpointObserver, public db:DbService, public cs:CastService ) {}
+  constructor(private breakpointObserver: BreakpointObserver, public db:DbService, public cast:CastService ) {}
   }
