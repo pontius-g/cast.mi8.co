@@ -8,6 +8,7 @@ import * as Hls from 'hls.js';
 export class PreviewComponent implements OnInit {
   constructor() {}
   @Input() mediaPath: string;
+  // TODO: detect source change!!!
   ngOnInit() {
     let v=document.querySelector('video');
     if(Hls.isSupported() && this.mediaPath!==null) {
