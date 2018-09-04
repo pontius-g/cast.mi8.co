@@ -12,6 +12,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CoreModule } from './core/core.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PreviewComponent } from './preview/preview.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { environment } from '../environments/environment';
     MainNavComponent,
     MainDashboardComponent,
     LoadPlaylistComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PreviewComponent
   ],
   imports: [
     BrowserModule,

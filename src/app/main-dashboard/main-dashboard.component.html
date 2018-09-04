@@ -2,6 +2,7 @@
   <h1 class="mat-h1">Channels</h1>
   <mat-grid-list [cols]="card.num" rowHeight="192px">
     <mat-grid-tile *ngFor="let pl of db.currentPlaylist$ | async; let i=index" [colspan]="card.cols" [rowspan]="card.rows">
+      <!-- TODO: LAzyLoad -->
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
@@ -23,6 +24,5 @@
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-<div class="preview" *ngIf='previewState'>
-  <div class="ps-spacer"></div><video></video><div class="ps-spacer"></div>
-</div>
+<ps-preview *ngIf='previewState'>
+</ps-preview>
