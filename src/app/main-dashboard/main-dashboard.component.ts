@@ -19,7 +19,7 @@ export class MainDashboardComponent {
   //     } else this.card.num = 3;
   //   })
   // );
-  previewState: boolean = false;
+  mediaPath: string = null;
   constructor(private breakpointObserver: BreakpointObserver, public db: DbService, public cast: CastService) {}
   // TODO: Preview button and tile
 }

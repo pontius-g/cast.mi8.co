@@ -18,11 +18,11 @@
         </mat-card-content>
         <mat-card-footer>
           <button mat-raised-button (click)='cast.playStream.next(pl.link)'>cast</button>
-          <button mat-raised-button (click)='previewState=true'>preview</button>
+          <button mat-raised-button (click)='mediaPath=pl.link'>preview</button>
         </mat-card-footer>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-<ps-preview *ngIf='previewState'>
+<ps-preview *ngIf='mediaPath' [mediaPath]='mediaPath'>
 </ps-preview>
