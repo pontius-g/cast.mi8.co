@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, OnDestroy } from '@angular/core';
 import * as Hls from 'hls.js';
 @Component({
   selector: 'ps-preview',
@@ -6,17 +6,27 @@ import * as Hls from 'hls.js';
   styleUrls: ['./preview.component.css']
 })
 export class PreviewComponent implements OnInit {
-  constructor() {}
-  @Input() mediaPath: string;
-  // TODO: detect source change!!!
-  ngOnInit() {
-    let v=document.querySelector('video');
-    if(Hls.isSupported() && this.mediaPath!==null) {
-      let hls = new Hls();
-      hls.loadSource(this.mediaPath);
-      hls.attachMedia(v);
-      hls.on(Hls.Events.MANIFEST_PARSED,function() { v.play(); });
-    }
+  private __video:HTMLVideoElement;
+  private __hls:Hls=new Hls();
+  private __url:string=null;
+  constructor(private __el:ElementRef) {
+    this.__hls.on(Hls.Events.MANIFEST_PARSED,_=>{ this.__video.play(); });
   }
-
+  @Input() muted:boolean;
+  @Input() set mediaPath(v:string) {
+    if (this.__url){
+      this.__url=v;
+      this.__hls.detachMedia();
+      if (v) { this.loadPreview(); }
+    } else { this.__url=v; }
+  }
+  ngOnInit() {
+    this.__video=this.__el.nativeElement.querySelector('video');
+    this.loadPreview();
+  }
+  ngOnDestroy() { this.__hls.destroy(); }
+  loadPreview() {
+    this.__hls.loadSource(this.__url);
+    this.__hls.attachMedia(this.__video);
+  }
 }

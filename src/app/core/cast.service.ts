@@ -29,6 +29,9 @@ export class CastService {
           console.log('Error sending request to Chromecast: ', e);
           //TODO: add fallback to previous stream
         })        
+      } else {
+        // Temporary: click icon if chromeCast session is not initialized
+        (document.querySelector('google-cast-launcher') as any).click();
       }
     },
     e=>{ console.log('playStream subscription error: ', e); });

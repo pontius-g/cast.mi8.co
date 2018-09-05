@@ -18,11 +18,19 @@
         </mat-card-content>
         <mat-card-footer>
           <button mat-raised-button (click)='cast.playStream.next(pl.link)'>cast</button>
-          <button mat-raised-button (click)='mediaPath=pl.link'>preview</button>
+          <button mat-raised-button (click)='mediaPath=pl.link;'>preview</button>
         </mat-card-footer>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
-<ps-preview *ngIf='mediaPath' [mediaPath]='mediaPath'>
-</ps-preview>
+<div class='close-preview' *ngIf='mediaPath'>
+  <div class='ps-spacer'></div>
+  <button mat-raised-button (click)='previewMuted=false;'>unmute</button>
+  <div class='ps-spacer'></div>
+  <button mat-raised-button (click)='cast.playStream.next(mediaPath);mediaPath=null;'>cast</button>
+  <div class='ps-spacer'></div>
+  <button mat-raised-button (click)='mediaPath=null;'>close preview</button>
+  <div class='ps-spacer'></div>
+</div>
+<ps-preview #psPreview *ngIf='mediaPath' [mediaPath]='mediaPath' [muted]='previewMuted'></ps-preview>
