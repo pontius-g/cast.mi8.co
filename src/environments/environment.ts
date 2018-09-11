@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyD6L5rUwaGn-ecnNqqJwfnd0D9a71UfDbc",
+    authDomain: "chromecast-play.firebaseapp.com",
+    databaseURL: "https://chromecast-play.firebaseio.com",
+    projectId: "chromecast-play",
+    storageBucket: "chromecast-play.appspot.com",
+    messagingSenderId: "749245485612"
+  }
 };
 
 /*
