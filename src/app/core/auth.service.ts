@@ -18,6 +18,6 @@ export class AuthService {
     );
   }
   login() {
-    this.__fire.auth.signInWithPopup(new this.__fire.base.auth.GoogleAuthProvider());
+    this.__fire.auth.auth.signInWithPopup(new this.__fire.base.auth.GoogleAuthProvider());
   }
 }
