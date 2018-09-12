@@ -10,4 +10,4 @@ export class FireService {
   public base=firebase;
   constructor(public auth:AngularFireAuth) { }
 }
-// HINT: interim service for firebase db connection
+// HINT: interim service for firebase libs

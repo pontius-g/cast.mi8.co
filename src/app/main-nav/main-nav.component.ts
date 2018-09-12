@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DbService } from '../core/db.service';
 import { CastService } from '../core/cast.service';
+import { AuthService } from '../core/auth.service';
 @Component({
   selector: 'ps-main-nav',
   templateUrl: './main-nav.component.html',
@@ -14,5 +15,5 @@ export class MainNavComponent {
     .pipe(
       map(result => result.matches)
     );
-  constructor(private breakpointObserver: BreakpointObserver, public db:DbService, public cast:CastService ) {}
+  constructor(private breakpointObserver: BreakpointObserver, public db:DbService, public cast:CastService,  public auth:AuthService) {}
   }

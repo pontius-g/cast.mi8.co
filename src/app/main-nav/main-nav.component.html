@@ -9,6 +9,7 @@
     <mat-toolbar color="primary"><a class="logo" [routerLink]="['/']" routerLinkActive="router-link-active" >Chromecast>OTT</a></mat-toolbar>
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/loadPlaylist']" routerLinkActive="router-link-active" >Load playlist</a>
+      <a mat-list-item (click)='auth.login()'>Login</a>
       <mat-divider></mat-divider>
       <mat-list>
         <mat-list-item *ngFor="let pl of db.storedPlaylists">

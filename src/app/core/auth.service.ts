@@ -12,12 +12,13 @@ export class AuthService {
     .subscribe(
       d=>{
         //tmp
-        console.log('AUTH: ', d);
+        if (d) console.log('[fire.auth.authState] AUTH: ', d);
       },
       e=>{ console.log('[fire.auth.authState] ERROR: ', e); }
     );
   }
   login() {
-    this.__fire.auth.auth.signInWithPopup(new this.__fire.base.auth.GoogleAuthProvider());
+    this.__fire.auth.auth.signInWithPopup(new this.__fire.base.auth.GoogleAuthProvider())
+    .catch(e=>{console.log('[fire.auth.auth.signInWithPopup] ERROR: ', e);});
   }
 }
