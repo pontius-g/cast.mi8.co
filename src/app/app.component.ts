@@ -8,5 +8,5 @@ import { AuthService } from './core/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private __afAuth:AuthService){}
+  constructor(private __auth:AuthService){}
 }

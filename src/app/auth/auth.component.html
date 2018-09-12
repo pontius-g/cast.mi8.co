@@ -1,0 +1,15 @@
+<h1 class="mat-h1">Authentication</h1>
+<mat-grid-list cols="4" rowHeight="64px">
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <button mat-raised-button (click)="auth.login('g')">Google</button>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <button mat-raised-button (click)="auth.login('f')">Facebook</button>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <button mat-raised-button (click)="auth.login('t')">Twitter</button>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <button mat-raised-button (click)="auth.login('e')">Email</button>
+  </mat-grid-tile>
+</mat-grid-list>

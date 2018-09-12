@@ -10,3 +10,8 @@ export interface psStoredPlaylist {
     listname: string,
     list: Array<psStoredPlaylistItem>
 }
+export interface psAuthUser {
+    uid: string,
+    name: string,
+    email: string
+}

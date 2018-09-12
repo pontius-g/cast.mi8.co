@@ -13,6 +13,7 @@ import { CoreModule } from './core/core.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PreviewComponent } from './preview/preview.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PreviewComponent } from './preview/preview.component';
     MainDashboardComponent,
     LoadPlaylistComponent,
     NotFoundComponent,
-    PreviewComponent
+    PreviewComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
