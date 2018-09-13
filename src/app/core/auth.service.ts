@@ -2,20 +2,23 @@ import { Injectable } from '@angular/core';
 import { CoreModule } from './core.module';
 import { Router } from '@angular/router';
 import { FireService, AuthProvider, AuthUser } from './fire.service';
-import { psAuthUser } from './interfaces';
-import { BehaviorSubject } from 'rxjs';
+import { psAuthUser, psAuthLicense } from './interfaces';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: CoreModule
 })
 export class AuthService {
-  authData$: BehaviorSubject<psAuthUser> = new BehaviorSubject({uid: null,name: null,email: null});
+  private __lic:psAuthLicense;
+  private __authData$: BehaviorSubject<psAuthUser> = new BehaviorSubject(<psAuthUser>{uid: null,name: null,email: null});
+  authData$: Observable<psAuthUser> = this.__authData$.pipe(map(d=> d={ ... d, lic: this.__lic} ));;
   constructor(private __router:Router, private __fire:FireService) {
     this.__fire.auth.authState
     .subscribe(
       (d:AuthUser)=>{
-        if (d) this.authData$.next({uid: d.uid,name: d.displayName,email: d.email});
-        else this.authData$.next({uid: null,name: null,email: null});
+        if (d) this.__authData$.next({uid: d.uid,name: d.displayName,email: d.email});
+        else this.__authData$.next({uid: null,name: null,email: null});
       },
       e=>{ console.log('[fire.auth.authState] ERROR: ', e); }
     );

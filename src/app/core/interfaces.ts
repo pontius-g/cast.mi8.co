@@ -13,5 +13,11 @@ export interface psStoredPlaylist {
 export interface psAuthUser {
     uid: string,
     name: string,
-    email: string
+    email: string,
+    lic: psAuthLicense | null
+}
+export interface psAuthLicense {
+    id: string,
+    v: boolean,
+    exp: number
 }
