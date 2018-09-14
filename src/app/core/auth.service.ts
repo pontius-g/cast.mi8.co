@@ -3,22 +3,31 @@ import { CoreModule } from './core.module';
 import { Router } from '@angular/router';
 import { FireService, AuthProvider, AuthUser } from './fire.service';
 import { psAuthUser, psAuthLicense } from './interfaces';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: CoreModule
 })
 export class AuthService {
-  private __lic:psAuthLicense;
-  private __authData$: BehaviorSubject<psAuthUser> = new BehaviorSubject(<psAuthUser>{uid: null,name: null,email: null});
-  authData$: Observable<psAuthUser> = this.__authData$.pipe(map(d=> d={ ... d, lic: this.__lic} ));;
+  // private __lic:psAuthLicense | null;
+  // private __authData$: BehaviorSubject<psAuthUser> = new BehaviorSubject(<psAuthUser>{uid: null,name: null,email: null});
+  // authData$: Observable<psAuthUser> = this.__authData$.pipe(map(d=> d={ ... d, lic: this.__lic} ));
+  public readonly authData$: Observable<psAuthUser | null> = this.__fire.auth.authState.pipe(switchMap(d=>{
+    if (!d) return of(null);
+    return this.__fire.store.doc<psAuthUser | null>(`global/clients/${d.uid}`).valueChanges();
+  }));
   constructor(private __router:Router, private __fire:FireService) {
     this.__fire.auth.authState
     .subscribe(
       (d:AuthUser)=>{
-        if (d) this.__authData$.next({uid: d.uid,name: d.displayName,email: d.email});
-        else this.__authData$.next({uid: null,name: null,email: null});
+        // if (d) this.__authData$.next({uid: d.uid,name: d.displayName,email: d.email});
+        // else this.__authData$.next({uid: null,name: null,email: null});
+        if (!!d) {
+          
+        } else {
+
+        }
       },
       e=>{ console.log('[fire.auth.authState] ERROR: ', e); }
     );
