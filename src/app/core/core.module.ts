@@ -10,7 +10,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     CommonModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule.enablePersistence()
   ],
   declarations: []
 })
