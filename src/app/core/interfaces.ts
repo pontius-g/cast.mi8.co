@@ -14,10 +14,19 @@ export interface psAuthUser {
     uid: string,
     name: string,
     email: string,
-    lic: psAuthLicense | null
+    lic: psAuthLicense | null,
+    store: psAuthStore | null
 }
 export interface psAuthLicense {
     id: string,
     v: boolean,
     exp: number
+}
+export interface psAuthStore {
+    la: Array<psStoredPlaylist>,
+    epg: Array<psEpgStored> | null
+}
+export interface psEpgStored {
+    id: string,
+    v: Array<string>
 }
